@@ -12,7 +12,5 @@
 */
 
 /** @var \Laravel\Lumen\Routing\Router $router */
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
-$router->get('/example-save', 'ExampleController@index');
+$router->get('/', 'ExampleController@index');
+$router->get('/google-callback', 'ExampleController@callback');
