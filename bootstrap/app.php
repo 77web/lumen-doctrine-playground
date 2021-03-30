@@ -61,6 +61,7 @@ $app->singleton(
 
 $app->configure('app');
 $app->configure('database');
+$app->configure('services');
 
 /*
 |--------------------------------------------------------------------------
@@ -97,6 +98,7 @@ $app->configure('database');
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(LaravelDoctrine\ORM\DoctrineServiceProvider::class);
 $app->register(LaravelDoctrine\Migrations\MigrationsServiceProvider::class);
+$app->register(Laravel\Socialite\SocialiteServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
