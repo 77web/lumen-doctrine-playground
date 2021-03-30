@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Entities\Customer;
+use App\Repositories\CustomerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Tests\TestCase;
 
@@ -15,7 +16,10 @@ class ExampleControllerTest extends TestCase
         $this->get('/example-save');
         $this->assertEquals(200, $this->response->getStatusCode());
 
-        $customer = $app->get(EntityManagerInterface::class)->find(Customer::class, 1);
-        $this->assertNotNull($customer);
+        $customers = $app->get(EntityManagerInterface::class)->getRepository(Customer::class)->findAll();
+        $this->assertGreaterThanOrEqual(1, count($customers));
+
+        $customers = $app->get(CustomerRepository::class)->findAll();
+        $this->assertGreaterThanOrEqual(1, count($customers));
     }
 }
